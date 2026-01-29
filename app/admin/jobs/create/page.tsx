@@ -70,7 +70,7 @@ export default function CreateJobPage() {
                     // Probably HTML response (500 or 404)
                     errorMessage = `Server Error (${res.status}): ${res.statusText}`
                 }
-                alert(`Error: ${errorMessage}`) // Force visibility
+                // alert(`Error: ${errorMessage}`) // REMOVED: Using branded toast instead
                 throw new Error(errorMessage)
             }
 
@@ -79,9 +79,9 @@ export default function CreateJobPage() {
                 'success'
             )
             router.push('/admin')
-        } catch (error) {
+        } catch (error: any) {
             console.error('Submission error:', error)
-            showNotification('Failed to create job', 'error')
+            showNotification(error.message || 'Failed to create job', 'error')
         } finally {
             setLoading(false)
         }
