@@ -146,13 +146,11 @@ export default async function JobDetailsPage({ params }: Props) {
 
                         {/* Mobile view alert only (Form is in button) */}
                         <div className="lg:hidden">
+                            <MobileApplyButton jobId={job.id} jobTitle={job.title} />
                             <JobAlert category={job.category} />
                         </div>
                     </div>
                 </div>
-
-                {/* Mobile Sticky Button */}
-                <MobileApplyButton jobId={job.id} jobTitle={job.title} />
 
 
 

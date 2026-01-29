@@ -11,9 +11,10 @@ interface ModalProps {
     children: React.ReactNode
     title?: string
     className?: string
+    variant?: 'center' | 'bottom'
 }
 
-export function Modal({ isOpen, onClose, children, title, className }: ModalProps) {
+export function Modal({ isOpen, onClose, children, title, className, variant = 'center' }: ModalProps) {
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
             if (e.key === 'Escape') onClose()
@@ -32,21 +33,26 @@ export function Modal({ isOpen, onClose, children, title, className }: ModalProp
 
     if (!isOpen) return null
 
-    // We use createPortal to ensure the modal is always on top of everything
-    // assuming 'body' exists. 
-    // If SSR issues arise, we might need a mounted check, but standard Next.js 'use client' usually handles this fine after hydration.
+    const isBottom = variant === 'bottom'
+
     return createPortal(
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className={cn(
+            "fixed inset-0 z-50 flex p-4",
+            isBottom ? "items-end justify-center sm:items-center" : "items-center justify-center"
+        )}>
             {/* Backdrop */}
             <div
-                className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
+                className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
                 onClick={onClose}
             />
 
             {/* Content */}
             <div
                 className={cn(
-                    "relative w-full max-w-lg bg-white rounded-2xl shadow-2xl p-6 transform transition-all animate-in fade-in zoom-in-95 duration-200",
+                    "relative w-full max-w-lg bg-white shadow-2xl p-6 transform transition-all",
+                    isBottom
+                        ? "rounded-t-3xl rounded-b-none sm:rounded-2xl animate-modal-slide-up"
+                        : "rounded-2xl animate-modal-zoom-in",
                     className
                 )}
             >
@@ -62,7 +68,7 @@ export function Modal({ isOpen, onClose, children, title, className }: ModalProp
                 </div>
 
                 {/* Body */}
-                <div className="mb-6">
+                <div className="mb-2">
                     {children}
                 </div>
             </div>

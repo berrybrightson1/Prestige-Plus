@@ -15,8 +15,8 @@ export function MobileApplyButton({ jobId, jobTitle }: MobileApplyButtonProps) {
 
     return (
         <>
-            {/* Sticky Bottom Container */}
-            <div className="lg:hidden fixed bottom-0 left-0 right-0 p-4 bg-white/80 backdrop-blur-md border-t border-cream-200 z-40">
+            {/* Inline Button for Mobile Layout */}
+            <div className="lg:hidden mb-6">
                 <Button
                     variant="primary"
                     className="w-full shadow-lg h-14 text-lg"
@@ -26,13 +26,14 @@ export function MobileApplyButton({ jobId, jobTitle }: MobileApplyButtonProps) {
                 </Button>
             </div>
 
-            {/* Application Modal */}
+            {/* Application Modal with slide-up animation */}
             <Modal
                 isOpen={isOpen}
                 onClose={() => setIsOpen(false)}
                 title={`Apply for ${jobTitle}`}
+                variant="bottom"
             >
-                <div className="max-h-[80vh] overflow-y-auto">
+                <div className="max-h-[80vh] overflow-y-auto pr-2 pb-4">
                     <ApplicationForm jobId={jobId} jobTitle={jobTitle} isModal={true} />
                 </div>
             </Modal>
