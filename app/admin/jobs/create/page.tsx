@@ -61,8 +61,17 @@ export default function CreateJobPage() {
             })
 
             if (!res.ok) {
-                const errorData = await res.json()
-                throw new Error(errorData.error || 'Failed to create job')
+                let errorMessage = 'Failed to create job'
+                try {
+                    const errorData = await res.json()
+                    errorMessage = errorData.error || errorMessage
+                } catch (e) {
+                    console.error('Failed to parse error response', e)
+                    // Probably HTML response (500 or 404)
+                    errorMessage = `Server Error (${res.status}): ${res.statusText}`
+                }
+                alert(`Error: ${errorMessage}`) // Force visibility
+                throw new Error(errorMessage)
             }
 
             showNotification(
