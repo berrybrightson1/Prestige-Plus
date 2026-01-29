@@ -77,10 +77,10 @@ export async function POST(req: NextRequest) {
         });
 
         return NextResponse.json(job, { status: 201 });
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error creating job:', error);
         return NextResponse.json(
-            { error: 'Failed to create job' },
+            { error: error.message || 'Failed to create job' },
             { status: 500 }
         );
     }
