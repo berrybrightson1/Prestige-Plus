@@ -9,7 +9,6 @@ const nextConfig = {
                 hostname: '**.supabase.co',
             },
         ],
-        unoptimized: true, // For development
     },
     eslint: {
         ignoreDuringBuilds: true, // Temporarily ignore ESLint during builds
