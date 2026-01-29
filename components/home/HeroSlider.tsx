@@ -75,22 +75,22 @@ export function HeroSlider() {
                             </div>
 
                             {/* Operations Indicator - Absolute Bottom */}
-                            <div className="absolute bottom-20 left-0 right-0 flex justify-center z-10">
+                            <div className="absolute bottom-10 lg:bottom-20 left-0 right-0 flex justify-center z-10">
                                 <div className="inline-flex items-center gap-3 bg-accent-navy/90 backdrop-blur-sm py-1.5 px-4 rounded-full border border-white/10 shadow-lg animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
                                     <div className="flex -space-x-2">
                                         <img
-                                            src="https://flagcdn.com/w40/gh.png"
-                                            alt="Ghana"
+                                            src="https://flagcdn.com/w40/es.png"
+                                            alt="Spain"
                                             className="w-6 h-6 rounded-full border-[1.5px] border-accent-navy object-cover"
                                         />
                                         <img
-                                            src="https://flagcdn.com/w40/us.png"
-                                            alt="USA"
+                                            src="https://flagcdn.com/w40/de.png"
+                                            alt="Germany"
                                             className="w-6 h-6 rounded-full border-[1.5px] border-accent-navy object-cover"
                                         />
                                         <img
-                                            src="https://flagcdn.com/w40/cn.png"
-                                            alt="China"
+                                            src="https://flagcdn.com/w40/gb.png"
+                                            alt="UK"
                                             className="w-6 h-6 rounded-full border-[1.5px] border-accent-navy object-cover"
                                         />
                                         <div className="w-6 h-6 rounded-full border-[1.5px] border-accent-navy bg-gray-700 flex items-center justify-center text-[9px] text-white font-bold">
