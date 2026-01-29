@@ -4,11 +4,51 @@ import { MapPin, Calendar, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { ImageGallery } from '@/components/jobs/ImageGallery'
 import { ApplicationForm } from '@/components/jobs/ApplicationForm'
+import { SimilarJobs } from '@/components/jobs/SimilarJobs'
+import { ViewTracker } from '@/components/jobs/ViewTracker'
+import { JobAlert } from '@/components/jobs/JobAlert'
+import { Metadata } from 'next'
 
-export default async function JobDetailsPage(props: { params: Promise<{ id: string }> }) {
-    const params = await props.params;
+interface Props {
+    params: Promise<{ id: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { id } = await params
     const job = await prisma.opportunity.findUnique({
-        where: { id: params.id },
+        where: { id },
+    })
+
+    if (!job) {
+        return {
+            title: 'Job Not Found | Prestige Plus',
+        }
+    }
+
+    const ogImage = job.images[0] || '/placeholder-job.jpg'
+
+    return {
+        title: `${job.title} in ${job.location} | Prestige Plus Recruitment`,
+        description: `Apply for ${job.title} at Prestige Plus. ${job.description.slice(0, 150)}...`,
+        openGraph: {
+            title: `${job.title} | Prestige Plus`,
+            description: `Salary: ${job.salary}. Location: ${job.location}. Apply now!`,
+            images: [
+                {
+                    url: ogImage,
+                    width: 1200,
+                    height: 630,
+                    alt: job.title,
+                },
+            ],
+        },
+    }
+}
+
+export default async function JobDetailsPage({ params }: Props) {
+    const { id } = await params
+    const job = await prisma.opportunity.findUnique({
+        where: { id },
     })
 
     if (!job) {
@@ -24,7 +64,7 @@ export default async function JobDetailsPage(props: { params: Promise<{ id: stri
                     Back to Jobs
                 </Link>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
                     {/* Main Content */}
                     <div className="lg:col-span-2">
                         {/* Image Gallery */}
@@ -86,8 +126,15 @@ export default async function JobDetailsPage(props: { params: Promise<{ id: stri
                     {/* Sidebar - Application Form */}
                     <div className="lg:col-span-1">
                         <ApplicationForm jobId={job.id} jobTitle={job.title} />
+                        <JobAlert category={job.category} />
                     </div>
                 </div>
+
+
+
+                {/* Similar Jobs */}
+                <SimilarJobs currentJobId={job.id} category={job.category} />
+                <ViewTracker jobId={job.id} />
             </div>
         </div>
     )

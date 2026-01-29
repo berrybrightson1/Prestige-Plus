@@ -4,8 +4,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
-import { Card } from '@/components/ui/Card'
-import { Plus, FileText, Users, Briefcase, LogOut, ArrowRight, Clock, CheckCircle, Search } from 'lucide-react'
+import { Plus, Users, Briefcase, LogOut, ArrowRight, CheckCircle, Search, Eye } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export default function AdminDashboardPage() {
@@ -18,7 +17,8 @@ export default function AdminDashboardPage() {
         stats: {
             totalJobs: 0,
             activeListings: 0,
-            totalApplications: 0
+            totalApplications: 0,
+            totalViews: 0
         }
     })
 
@@ -55,7 +55,8 @@ export default function AdminDashboardPage() {
                     stats: {
                         totalJobs: jobs.length,
                         activeListings: jobs.filter((j: any) => j.status === 'PUBLISHED').length,
-                        totalApplications: apps.length
+                        totalApplications: apps.length,
+                        totalViews: jobs.reduce((acc: number, job: any) => acc + (job.views || 0), 0)
                     }
                 })
             } catch (error) {
@@ -114,7 +115,7 @@ export default function AdminDashboardPage() {
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
                     <StatCard
                         label="Total Jobs"
                         value={data.stats.totalJobs}
@@ -132,6 +133,12 @@ export default function AdminDashboardPage() {
                         value={data.stats.totalApplications}
                         icon={Users}
                         color="bg-purple-600"
+                    />
+                    <StatCard
+                        label="Total Views"
+                        value={data.stats.totalViews}
+                        icon={Eye}
+                        color="bg-amber-600"
                     />
                 </div>
 
@@ -170,9 +177,15 @@ export default function AdminDashboardPage() {
                                                 </div>
                                                 <div className="flex flex-col items-end gap-2">
                                                     <StatusBadge status={job.status} />
-                                                    <span className="text-xs text-gray-400">
-                                                        {new Date(job.created_at).toLocaleDateString()}
-                                                    </span>
+                                                    <div className="flex items-center gap-3 text-xs text-gray-400">
+                                                        <span className="flex items-center gap-1">
+                                                            <Eye className="h-3 w-3" />
+                                                            {job.views || 0}
+                                                        </span>
+                                                        <span>
+                                                            {new Date(job.created_at).toLocaleDateString()}
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </Link>
@@ -213,7 +226,7 @@ export default function AdminDashboardPage() {
                                                         {app.candidate_name}
                                                     </h3>
                                                     <p className="text-sm text-gray-500 mt-1">
-                                                        Applied for <span className="font-medium text-accent-navy">{app.job?.title || 'Unknown Role'}</span>
+                                                        Applied for <span className="font-medium text-accent-navy">{app.opportunity?.title || 'Unknown Role'}</span>
                                                     </p>
                                                 </div>
                                                 <div className="flex flex-col items-end gap-2">

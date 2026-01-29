@@ -16,6 +16,14 @@ enum Status {
   FILLED
 }
 
+enum ApplicationStatus {
+  PENDING
+  REVIEWING
+  INTERVIEW
+  OFFER
+  REJECTED
+}
+
 model Opportunity {
   id            String   @id @default(uuid())
   title         String
@@ -29,6 +37,7 @@ model Opportunity {
   images        String[]
   category      String   @default("Hospitality")
   status        Status   @default(PUBLISHED)
+  views         Int      @default(0)
   created_at    DateTime @default(now())
   
   applications  Application[]
@@ -37,15 +46,25 @@ model Opportunity {
 }
 
 model Application {
-  id              String   @id @default(uuid())
+  id              String            @id @default(uuid())
   job_id          String
   candidate_name  String
   email           String
   cv_url          String
-  message         String?  @db.Text
-  created_at      DateTime @default(now())
+  message         String?           @db.Text
+  status          ApplicationStatus @default(PENDING)
+  created_at      DateTime          @default(now())
   
   opportunity     Opportunity @relation(fields: [job_id], references: [id], onDelete: Cascade)
   
   @@map("applications")
+}
+
+model Subscriber {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  search_query String?
+  created_at   DateTime @default(now())
+
+  @@map("subscribers")
 }

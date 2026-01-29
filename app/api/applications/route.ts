@@ -40,7 +40,7 @@ export async function GET(req: NextRequest) {
         const applications = await prisma.application.findMany({
             orderBy: { created_at: 'desc' },
             include: {
-                job: {
+                opportunity: {
                     select: { title: true }
                 }
             }
