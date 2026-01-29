@@ -10,9 +10,10 @@ import { Upload } from 'lucide-react'
 interface ApplicationFormProps {
     jobId: string
     jobTitle: string
+    isModal?: boolean
 }
 
-export function ApplicationForm({ jobId, jobTitle }: ApplicationFormProps) {
+export function ApplicationForm({ jobId, jobTitle, isModal }: ApplicationFormProps) {
     const { showNotification } = useCommandPill()
     const [loading, setLoading] = useState(false)
     const [formData, setFormData] = useState({
@@ -76,7 +77,7 @@ export function ApplicationForm({ jobId, jobTitle }: ApplicationFormProps) {
     }
 
     return (
-        <div className="floating-card sticky top-24">
+        <div className={isModal ? "" : "floating-card sticky top-24"}>
             <h3 className="text-2xl font-semibold mb-6">Apply Now</h3>
 
             <form onSubmit={handleSubmit} className="space-y-4">

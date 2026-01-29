@@ -57,13 +57,14 @@ export function OpportunityCard({ id, title, location, salary, country, images, 
                             <div className="h-10 w-10 rounded-full bg-cream-200 flex items-center justify-center text-accent-navy group-hover:bg-accent-navy group-hover:text-white transition-colors duration-300">
                                 <ArrowRight className="h-5 w-5 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
                             </div>
-                            {flagUrl && (
+                            {flagUrl && flagUrl !== '' && (
                                 <div className="relative w-8 h-6 rounded overflow-hidden shadow-sm shrink-0">
                                     <Image
                                         src={flagUrl}
                                         alt={`Flag of ${country}`}
                                         fill
                                         className="object-cover"
+                                        unoptimized // Added to avoid Vercel image optimization issues with external URLs sometimes
                                     />
                                 </div>
                             )}

@@ -8,6 +8,9 @@ import { SimilarJobs } from '@/components/jobs/SimilarJobs'
 import { ViewTracker } from '@/components/jobs/ViewTracker'
 import { JobAlert } from '@/components/jobs/JobAlert'
 import { Metadata } from 'next'
+import { getFlagUrl } from '@/lib/countries'
+import Image from 'next/image'
+import { MobileApplyButton } from '@/components/jobs/MobileApplyButton'
 
 interface Props {
     params: Promise<{ id: string }>
@@ -79,6 +82,17 @@ export default async function JobDetailsPage({ params }: Props) {
                                         <div className="flex items-center gap-2">
                                             <MapPin className="h-5 w-5" />
                                             <span>{job.location}</span>
+                                            {job.country && getFlagUrl(job.country) !== '' && (
+                                                <div className="relative w-6 h-4 rounded-sm overflow-hidden shadow-sm inline-block ml-1">
+                                                    <Image
+                                                        src={getFlagUrl(job.country)}
+                                                        alt={`Flag of ${job.country}`}
+                                                        fill
+                                                        className="object-cover"
+                                                        unoptimized
+                                                    />
+                                                </div>
+                                            )}
                                         </div>
                                         {/* Salary removed from here, moved to right */}
                                         <div className="flex items-center gap-2">
@@ -124,11 +138,21 @@ export default async function JobDetailsPage({ params }: Props) {
                     </div>
 
                     {/* Sidebar - Application Form */}
-                    <div className="lg:col-span-1">
-                        <ApplicationForm jobId={job.id} jobTitle={job.title} />
-                        <JobAlert category={job.category} />
+                    <div className="lg:col-span-1 border-l border-cream-200 lg:pl-8">
+                        <div className="hidden lg:block space-y-8">
+                            <ApplicationForm jobId={job.id} jobTitle={job.title} />
+                            <JobAlert category={job.category} />
+                        </div>
+
+                        {/* Mobile view alert only (Form is in button) */}
+                        <div className="lg:hidden">
+                            <JobAlert category={job.category} />
+                        </div>
                     </div>
                 </div>
+
+                {/* Mobile Sticky Button */}
+                <MobileApplyButton jobId={job.id} jobTitle={job.title} />
 
 
 
