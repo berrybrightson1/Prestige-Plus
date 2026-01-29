@@ -60,7 +60,10 @@ export default function CreateJobPage() {
                 body: JSON.stringify(submissionData),
             })
 
-            if (!res.ok) throw new Error('Failed to create job')
+            if (!res.ok) {
+                const errorData = await res.json()
+                throw new Error(errorData.error || 'Failed to create job')
+            }
 
             showNotification(
                 status === 'DRAFT' ? 'Job saved as draft!' : 'Job published successfully!',
