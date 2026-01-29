@@ -23,16 +23,16 @@ const metrics = [
 
 export function SuccessMetrics() {
     return (
-        <section className="py-24 bg-white relative overflow-hidden">
+        <section className="py-12 lg:py-24 bg-white relative overflow-hidden">
             {/* Ultra-subtle background blur */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gray-50/50 rounded-full blur-3xl -z-10" />
 
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-20">
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+                <div className="text-center mb-10 lg:mb-20">
+                    <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4 lg:mb-6 tracking-tight">
                         Our Track Record
                     </h2>
-                    <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto font-medium">
+                    <p className="text-base lg:text-xl text-gray-500 max-w-2xl mx-auto font-medium">
                         Trusted by thousands of candidates and employers worldwide
                     </p>
                 </div>

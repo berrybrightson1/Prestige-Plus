@@ -100,12 +100,12 @@ export default function AdminDashboardPage() {
     }
 
     return (
-        <div className="min-h-screen bg-cream-50/50 py-12">
+        <div className="min-h-screen bg-cream-50/50 py-6 lg:py-12">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-8">
                     <div>
-                        <h1 className="text-2xl font-bold text-accent-navy">Overview</h1>
+                        <h1 className="text-2xl lg:text-3xl font-bold text-accent-navy">Overview</h1>
                         <p className="text-gray-500 text-sm">Welcome back, Admin</p>
                     </div>
                     <Button variant="outline" onClick={handleLogout} className="text-red-600 hover:bg-red-50 border-red-200">

@@ -45,7 +45,7 @@ export default function AdminJobsPage() {
     if (!isAuthenticated) return null
 
     return (
-        <div className="py-12">
+        <div className="py-6 lg:py-12">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
@@ -54,7 +54,7 @@ export default function AdminJobsPage() {
                             <ArrowLeft className="h-4 w-4" />
                             Back to Dashboard
                         </Link>
-                        <h1 className="heading-secondary">Manage Jobs</h1>
+                        <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">Manage Jobs</h1>
                     </div>
                     <Link href="/admin/jobs/create">
                         <Button variant="primary">

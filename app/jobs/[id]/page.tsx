@@ -59,15 +59,15 @@ export default async function JobDetailsPage({ params }: Props) {
     }
 
     return (
-        <div className="py-12">
+        <div className="py-6 lg:py-12">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Back Button */}
-                <Link href="/jobs" className="inline-flex items-center gap-2 text-accent-navy hover:underline mb-6">
+                <Link href="/jobs" className="inline-flex items-center gap-2 text-accent-navy hover:underline mb-4 lg:mb-6">
                     <ArrowLeft className="h-4 w-4" />
                     Back to Jobs
                 </Link>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8 lg:mb-12">
                     {/* Main Content */}
                     <div className="lg:col-span-2">
                         {/* Image Gallery */}
@@ -75,13 +75,13 @@ export default async function JobDetailsPage({ params }: Props) {
 
                         {/* Job Header */}
                         <div className="mt-8">
-                            <div className="flex items-start justify-between mb-4">
+                            <div className="flex flex-col sm:flex-row sm:items-start justify-between mb-6 gap-4">
                                 <div>
-                                    <h1 className="heading-secondary mb-2">{job.title}</h1>
-                                    <div className="flex flex-wrap gap-4 text-gray-600">
+                                    <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">{job.title}</h1>
+                                    <div className="flex flex-wrap gap-4 text-gray-500">
                                         <div className="flex items-center gap-2">
-                                            <MapPin className="h-5 w-5" />
-                                            <span>{job.location}</span>
+                                            <MapPin className="h-4 w-4" />
+                                            <span className="text-sm">{job.location}</span>
                                             {job.country && getFlagUrl(job.country) !== '' && (
                                                 <div className="relative w-6 h-4 rounded-sm overflow-hidden shadow-sm inline-block ml-1">
                                                     <Image
@@ -94,18 +94,17 @@ export default async function JobDetailsPage({ params }: Props) {
                                                 </div>
                                             )}
                                         </div>
-                                        {/* Salary removed from here, moved to right */}
                                         <div className="flex items-center gap-2">
-                                            <Calendar className="h-5 w-5" />
-                                            <span>Posted {job.created_at.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                                            <Calendar className="h-4 w-4" />
+                                            <span className="text-sm">Posted {job.created_at.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="text-right">
-                                    <div className="text-3xl font-bold text-accent-navy text-nowrap">
+                                <div className="sm:text-right bg-cream-100/50 p-4 rounded-xl border border-cream-200 sm:border-none sm:bg-transparent sm:p-0">
+                                    <div className="text-2xl lg:text-3xl font-bold text-accent-navy">
                                         $ {job.salary}
                                     </div>
-                                    <div className="text-sm text-gray-500 mt-1">
+                                    <div className="text-xs lg:text-sm text-gray-500 mt-1 uppercase tracking-wider font-semibold">
                                         / month
                                     </div>
                                 </div>

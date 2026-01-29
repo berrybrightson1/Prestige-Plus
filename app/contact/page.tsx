@@ -8,7 +8,7 @@ export default function ContactPage() {
     return (
         <div className="min-h-screen">
             {/* Hero Section */}
-            <div className="relative h-[400px] w-full">
+            <div className="relative h-[300px] md:h-[400px] w-full">
                 <Image
                     src="/contact-hero.png"
                     alt="Prestige Plus Office"
@@ -19,10 +19,10 @@ export default function ContactPage() {
                 <div className="absolute inset-0 bg-accent-navy/80 backdrop-blur-[2px]" />
                 <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center text-white px-4">
-                        <h1 className="text-4xl md:text-5xl font-bold mb-4 font-heading tracking-tight">
+                        <h1 className="text-3xl md:text-5xl font-bold mb-4 font-heading tracking-tight">
                             Get in Touch
                         </h1>
-                        <p className="text-lg md:text-xl text-cream-100 max-w-2xl mx-auto font-light">
+                        <p className="text-base md:text-xl text-cream-100 max-w-2xl mx-auto font-light">
                             We're here to help you find your perfect work-travel opportunity.
                             <br className="hidden md:block" />
                             Reach out to us anytime.
@@ -31,13 +31,13 @@ export default function ContactPage() {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-24 relative z-10 pb-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 md:-mt-24 relative z-10 pb-20">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
                     {/* Phone & WhatsApp - Prominent */}
                     <div className="lg:col-span-2">
-                        <div className="bg-white rounded-2xl shadow-xl p-8 border border-cream-100 h-full">
-                            <h2 className="text-2xl font-bold text-accent-navy mb-6">Direct Contact</h2>
+                        <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-cream-100 h-full">
+                            <h2 className="text-xl md:text-2xl font-bold text-accent-navy mb-6">Direct Contact</h2>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {/* WhatsApp Card */}

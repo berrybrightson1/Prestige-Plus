@@ -44,12 +44,12 @@ export default function JobsPage() {
     })
 
     return (
-        <div className="py-12">
+        <div className="py-6 lg:py-12">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <div className="text-center mb-12">
-                    <h1 className="heading-primary mb-4">Browse Opportunities</h1>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                <div className="text-center mb-8 lg:mb-12">
+                    <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight">Browse Opportunities</h1>
+                    <p className="text-base lg:text-lg text-gray-600 max-w-2xl mx-auto">
                         Discover exciting work-travel positions around the world
                     </p>
                 </div>

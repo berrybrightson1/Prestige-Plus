@@ -23,7 +23,7 @@ export function Header() {
                 <div className="flex h-16 items-center justify-between">
                     {/* Logo */}
                     <Link href="/" className="flex items-center">
-                        <span className="text-2xl font-bold text-accent-navy">
+                        <span className="text-xl md:text-2xl font-bold text-accent-navy tracking-tight">
                             Prestige Plus
                         </span>
                     </Link>
@@ -52,30 +52,30 @@ export function Header() {
                     {/* Mobile menu button */}
                     <button
                         type="button"
-                        className="md:hidden p-2 rounded-lg hover:bg-cream-200"
+                        className="md:hidden p-2 -mr-2 rounded-xl transition-colors active:bg-cream-200"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
                         {mobileMenuOpen ? (
-                            <X className="h-6 w-6" />
+                            <X className="h-6 w-6 text-accent-navy" />
                         ) : (
-                            <Menu className="h-6 w-6" />
+                            <Menu className="h-6 w-6 text-accent-navy" />
                         )}
                     </button>
                 </div>
 
                 {/* Mobile Navigation */}
                 {mobileMenuOpen && (
-                    <div className="md:hidden py-4 border-t border-cream-300">
-                        <div className="flex flex-col gap-4">
+                    <div className="md:hidden py-6 border-t border-cream-200 animate-in fade-in slide-in-from-top-4 duration-300">
+                        <div className="flex flex-col gap-5">
                             {navigation.map((item) => (
                                 <Link
                                     key={item.name}
                                     href={item.href}
                                     className={cn(
-                                        'text-base font-medium transition-colors',
+                                        'text-lg font-bold transition-colors px-2 py-1',
                                         pathname === item.href
                                             ? 'text-accent-navy'
-                                            : 'text-gray-600'
+                                            : 'text-gray-500 hover:text-accent-navy'
                                     )}
                                     onClick={() => setMobileMenuOpen(false)}
                                 >

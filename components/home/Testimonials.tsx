@@ -41,12 +41,12 @@ const testimonials = [
 
 export function Testimonials() {
     return (
-        <section className="py-20 bg-gray-50/30">
+        <section className="py-10 lg:py-20 bg-gray-50/30">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 lg:mb-12 gap-6">
                     <div>
-                        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">What Our Candidates Say</h2>
-                        <p className="text-lg text-gray-600 max-w-xl">
+                        <h2 className="text-2xl lg:text-4xl font-bold text-gray-900 mb-3 lg:mb-4">What Our Candidates Say</h2>
+                        <p className="text-base lg:text-lg text-gray-600 max-w-xl">
                             Real stories from professionals who found their next adventure with us.
                         </p>
                     </div>

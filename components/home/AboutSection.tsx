@@ -7,20 +7,20 @@ import { Card } from '@/components/ui/Card'
 
 export function AboutSection() {
     return (
-        <section className="py-12 lg:py-24 bg-gradient-to-br from-white to-gray-50 overflow-hidden relative">
+        <section className="py-8 lg:py-24 bg-gradient-to-br from-white to-gray-50 overflow-hidden relative">
             {/* Background Decoration - Hidden on mobile for minimalism */}
             <div className="hidden lg:block absolute top-0 right-0 w-1/3 h-full bg-accent-gold/5 blur-[120px] rounded-l-full pointer-events-none" />
 
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                     {/* Left Column: Text Content */}
                     <div className="text-center lg:text-left">
-                        <div className="inline-flex items-center justify-center px-3 py-1 bg-accent-navy/5 rounded-full mb-4">
-                            <span className="text-accent-navy font-semibold text-xs uppercase tracking-wider">
+                        <div className="inline-flex items-center justify-center px-3 py-1 bg-accent-navy/5 rounded-full mb-3 lg:mb-4">
+                            <span className="text-accent-navy font-semibold text-[10px] lg:text-xs uppercase tracking-wider">
                                 Who We Are
                             </span>
                         </div>
-                        <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4 lg:mb-6 leading-tight">
+                        <h2 className="text-2xl lg:text-5xl font-bold text-gray-900 mb-3 lg:mb-6 leading-tight">
                             Prestige Plus <br className="block" />
                             <span className="text-accent-gold">Recruitment UK</span>
                         </h2>

@@ -31,7 +31,7 @@ const slides = [
 
 export function HeroSlider() {
     return (
-        <div className="relative h-[600px] md:h-[700px] -mt-16">
+        <div className="relative h-[500px] md:h-[700px] -mt-16">
             <Swiper
                 modules={[Autoplay, Pagination]}
                 autoplay={{
@@ -59,11 +59,11 @@ export function HeroSlider() {
 
                             {/* Content */}
                             <div className="relative h-full flex items-center justify-center text-center px-4">
-                                <div className="max-w-4xl">
-                                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+                                <div className="max-w-4xl pt-16 md:pt-0">
+                                    <h1 className="text-4xl md:text-7xl font-bold text-white mb-4 lg:mb-6 leading-[1.1]">
                                         {slide.title}
                                     </h1>
-                                    <p className="text-xl md:text-2xl text-white/90 mb-8">
+                                    <p className="text-lg md:text-2xl text-white/90 mb-8 max-w-lg mx-auto">
                                         {slide.subtitle}
                                     </p>
                                     <Link href="/jobs">
@@ -106,6 +106,6 @@ export function HeroSlider() {
                     </SwiperSlide>
                 ))}
             </Swiper>
-        </div >
+        </div>
     )
 }

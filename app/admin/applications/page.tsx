@@ -86,12 +86,12 @@ export default function ApplicationsPage() {
     }
 
     return (
-        <div className="py-12">
+        <div className="py-6 lg:py-12">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between mb-8">
                     <div>
-                        <h1 className="heading-secondary mb-2">Applications</h1>
-                        <p className="text-gray-600">{applications.length} total applications</p>
+                        <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-1 lg:mb-2">Applications</h1>
+                        <p className="text-sm text-gray-500">{applications.length} total applications</p>
                     </div>
                     <Link href="/admin">
                         <Button variant="outline">Back to Dashboard</Button>

@@ -25,7 +25,7 @@ export function OpportunityCard({ id, title, location, salary, country, images, 
         <Link href={href || `/jobs/${id}`}>
             <Card variant="soft" className="hover:shadow-float transition-all cursor-pointer h-full flex flex-col group">
                 {/* Image */}
-                <div className="relative h-48 w-full rounded-lg overflow-hidden mb-4">
+                <div className="relative h-40 lg:h-48 w-full rounded-lg overflow-hidden mb-3 lg:mb-4">
                     <Image
                         src={mainImage}
                         alt={title}
@@ -36,13 +36,13 @@ export function OpportunityCard({ id, title, location, salary, country, images, 
 
                 {/* Content */}
                 <div className="flex-1 flex flex-col">
-                    <h3 className="text-xl font-semibold text-foreground mb-2 line-clamp-1">
+                    <h3 className="text-lg lg:text-xl font-semibold text-foreground mb-1 lg:mb-2 line-clamp-1 uppercase tracking-tight">
                         {title}
                     </h3>
 
-                    <div className="flex items-center gap-2 text-gray-500 mb-3">
-                        <MapPin className="h-4 w-4" />
-                        <span className="text-sm">{location}</span>
+                    <div className="flex items-center gap-2 text-gray-500 mb-2 lg:mb-3">
+                        <MapPin className="h-3.5 w-3.5" />
+                        <span className="text-xs lg:text-sm">{location}</span>
                     </div>
 
                     <div className="mb-4 flex-1">
@@ -69,7 +69,7 @@ export function OpportunityCard({ id, title, location, salary, country, images, 
                                 </div>
                             )}
                         </div>
-                        <div className="text-2xl font-bold text-accent-navy">
+                        <div className="text-xl lg:text-2xl font-bold text-accent-navy">
                             {salary.startsWith('£') || salary.startsWith('$') ? salary : `$${salary.replace(/^[^0-9]+/, '')}`}
                         </div>
                     </div>
